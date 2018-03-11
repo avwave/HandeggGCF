@@ -12,8 +12,8 @@ module.exports = (req, res) => {
             const code = Math.floor((Math.random() * 8999 + 1000));
             twilio.messages.create({
                 body: 'Your code is ' + code,
-                to: phone,
-                from: '+18018728841'
+                to: '+'+phone,
+                from: '+13605268368'
             }, (err) => {
                 if (err) { return res.status(422).send({ error: err }); }
                 admin.database().ref('users/' + phone)
