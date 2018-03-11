@@ -5,6 +5,10 @@ module.exports = (req, res) => {
     const source_user = String(req.body.source_user);
     const member_id = String(req.body.member_id);
     const dest_user = String(req.body.dest_user);
+
+    if (!source_user || !member_id ||!dest_user) {
+        return res.status(422).send({ error: 'bad input' });
+    }
     const transferdate = Date.now();
 
     source_ref = admin.database().ref('/users/'+source_user+'/members/'+member_id)
